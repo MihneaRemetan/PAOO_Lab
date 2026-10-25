@@ -1,34 +1,16 @@
-# Lucrare 3 – Gradebook
+# Lucrare 3 + tema
 
-Aplicație C++ (individual, proof of life) care ilustrează:
+Tema constă într-o aplicație scrisă în C++ în cadrul căreia să se abordeze următoarele subiecte discutate:
 
-| # | Concept | Unde |
-|---|---------|------|
-| 1 | Build cu CMake (structura din laborator) | `CMakeLists.txt`, `src/`, `inc/gradebook/` |
-| 2 | Încapsulare | `Student`: date `private`, acces doar prin metode cu validare |
-| 3 | Inițializarea membrilor în constructor | lista de inițializare; `name_` și `id_` sunt `const` |
-| 4 | Eliberarea heap-ului în destructor | `~Student()` face `delete[] grades_` |
-| 5 | Copy constructor (deep copy) | `Student(const Student&)` |
-| 6 | Move constructor | `Student(Student&&) noexcept` |
+1. **Build folosind CMake** respectând structura discutată la laborator
+2. **Încapsulare**
+3. **Inițializarea membrilor din constructor**
+4. **Eliberarea heap-ului în cadrul destructorului**
+5. **Suprascrierea copy constructor-ului**
+6. **Crearea unui move constructor**
 
-Fiecare constructor/destructor afișează un mesaj și adresa array-ului de pe heap.
+Pentru subpunctele **3-6** trebuie să ilustrați exemple reprezentative, care indică clar nevoia implementării acestor concepte (e.g., arătați de ce este nevoie de copy constructor și ce se poate întâmpla dacă nu este suprascris).
 
-## Build și rulare
-
-```bash
-cmake -S . -B build
-cmake --build build
-./build/gradebook
-```
-
-## Demo: ce se întâmplă fără copy constructor
-
-```bash
-cmake -S . -B build-shallow -DDEMO_SHALLOW_COPY=ON
-cmake --build build-shallow
-./build-shallow/gradebook
-```
-
-`ShallowStudent` folosește copy constructor-ul generat de compilator: cele două obiecte
-partajează același array, iar la final ambii destructori fac `delete[]` pe aceeași adresă.
-AddressSanitizer raportează `double-free`.
+Temele se pot face:
+- **Individual**: este de ajuns să realizați o aplicație simplă (*proof of life*); pentru a fi convingători, este recomandat să afișați în fiecare constructor/destructor câte un mesaj la ieșirea standard (`std::cout`).
+- **În echipe de câte doi**: trebuie să realizați o aplicație mai complexă.
